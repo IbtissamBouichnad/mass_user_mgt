@@ -1,0 +1,57 @@
+<mvc:View
+    xmlns:unified="sap.ui.unified"
+    controllerName="massuseradm.controller.Roles"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox id="vboxu">
+        <unified:FileUploader
+            id="fileUploader"
+            width="400px"
+            placeholder="Choose a file for Users roles"
+            change="onFileChange"
+        />
+        <RadioButtonGroup id="buttons_r" columns="1" >
+            <RadioButton
+                id="button1_r"
+                text="Resplace roles"
+            />
+            <RadioButton
+                id="button2_r"
+                text="Assign roles"
+            />
+            <RadioButton
+                id="button3_r"
+                text="Delete roles"
+            />
+        </RadioButtonGroup>
+        <Button id="sub_r" text="Submit"/>
+        <Table id="csvTable_r" items="{/csvData}">
+            <columns>
+                <Column id="_IDGenColumn1">
+                    <Text id="_IDGenText1" text="Userid"/>
+                </Column>
+                <Column id="_IDGenColumn2">
+                    <Text id="_IDGenText2" text="Role id"/>
+                </Column>
+                <Column id="_IDGenColumn3">
+                    <Text id="_IDGenText3" text="Start date"/>
+                </Column>
+                <Column id="_IDGenColumn4">
+                    <Text id="_IDGenText4" text="End date"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1">
+                    <cells>
+                        <Text id="text1" text="{userid}"/>
+                        <Text id="text2" text="{role}"/>
+                        <Text id="text3" text="{date_from}"/>
+                        <Text id="text4" text="{date_to}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</mvc:View>
+
+   

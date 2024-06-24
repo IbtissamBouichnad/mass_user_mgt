@@ -1,0 +1,165 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "massuseradm",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.0",
+            "toolsId": "b3845f18-2ec6-45ee-9742-6c7b827a3b35"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZODATA_ROLES_MGT_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "Z_CSV_USER_MAINTENANCE_SRV": {
+                "uri": "/sap/opu/odata/sap/Z_CSV_USER_MAINTENANCE_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/Z_CSV_USER_MAINTENANCE_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "Z_CSV_PARAMS_MAINTENANCE_SRV": {
+                "uri": "/sap/opu/odata/sap/Z_CSV_PARAMS_MAINTENANCE_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/Z_CSV_PARAMS_MAINTENANCE_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.125.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "massuseradm.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "Z_CSV_USER_MAINTENANCE_SRV": {
+                "dataSource": "Z_CSV_USER_MAINTENANCE_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "Z_CSV_PARAMS_MAINTENANCE_SRV": {
+                "dataSource": "Z_CSV_PARAMS_MAINTENANCE_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "massuseradm.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "Overview",
+                    "target": "OverviewTarget",
+                    "pattern": ":?query:"
+                }
+            ],
+            "targets": {
+                "OverviewTarget": {
+                    "viewType": "XML",
+                    "viewId": "overview",
+                    "viewName": "Overview"
+                },
+                "UsersTab": {
+                    "parent": "OverviewTarget",
+                    "viewType": "XML",
+                    "viewId": "idUsersTab",
+                    "viewName": "massuseradm.view.Users"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "massuseradm.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        }
+    }
+}
