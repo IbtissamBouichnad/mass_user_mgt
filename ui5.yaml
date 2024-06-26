@@ -17,12 +17,6 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://dlwr-trac-p2.dcsc.be:8000
-          - path: /sap
-            url: http://DLWR-TRAC-P2.dcsc.be:8000
-            client: '910'
-            destination: F4C-910
-          - path: /sap/opu/odata/sap/Z_CSV_PARAMS_MAINTENANCE_SRV
             url: http://DLWR-TRAC-P2.dcsc.be:8000
             client: '910'
             destination: F4C-910
